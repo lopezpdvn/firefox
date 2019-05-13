@@ -10,7 +10,7 @@ from pprint import pprint
 
 def get_places_iterator(backup_root):
     x = backup_root
-    if 'type' in x and x['type'] == 'text/x-moz-place' and 'tags' in x and x['tags']:
+    if x.get('type') == 'text/x-moz-place' and x.get('tags'):
         x_ = x.copy()
         x_.pop('children', None)
         yield x_
