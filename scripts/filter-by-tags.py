@@ -5,7 +5,6 @@
 
 import sys
 import json
-from pprint import pprint
 from argparse import ArgumentParser
 
 def get_tagged_places_iterator(backup_root):
@@ -35,4 +34,7 @@ places = [
     if place['tags'] & include_tagged and not (place['tags'] & exclude_tagged)]
 places.sort(key=lambda place: place['tags'])
 
-pprint(places)
+for place in places:
+    place['tags'] = tuple(place['tags'])
+
+json.dump(places, sys.stdout, indent=2)
