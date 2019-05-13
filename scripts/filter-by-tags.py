@@ -32,7 +32,7 @@ places = tuple(get_tagged_places_iterator(json.load(sys.stdin)))
 
 places = [
     place for place in places
-    if place['tags'] & include_tagged and not place['tags'] & exclude_tagged]
+    if place['tags'] & include_tagged and not (place['tags'] & exclude_tagged)]
 places.sort(key=lambda place: place['tags'])
 
 pprint(places)
