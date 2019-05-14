@@ -35,6 +35,6 @@ places = [
 places.sort(key=lambda place: place['tags'])
 
 for place in places:
-    place['tags'] = tuple(place['tags'])
+    place['tags'] = ','.join(place['tags'])
 
 json.dump(places, sys.stdout, indent=2)
