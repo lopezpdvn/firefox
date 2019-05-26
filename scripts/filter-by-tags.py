@@ -28,14 +28,13 @@ include_tagged = set(args.include_tagged)
 exclude_tagged = set(args.exclude_tagged)
 
 places = tuple(get_tagged_places_iterator(json.load(sys.stdin)))
+places = [place for place in places if place['tags']]
 
 if include_tagged:
     places = [place for place in places if place['tags'] & include_tagged]
 
 if exclude_tagged:
     places = [place for place in places if not (place['tags'] & exclude_tagged)]
-
-#places = [place for place in places if place['tags']]
 
 # sort tags
 for place in places:
