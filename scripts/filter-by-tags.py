@@ -37,9 +37,10 @@ if exclude_tagged:
 
 #places = [place for place in places if place['tags']]
 
-places.sort(key=lambda place: place['tags'])
-
+# sort tags
 for place in places:
-    place['tags'] = ','.join(place['tags'])
+    place['tags'] = ','.join(sorted(place['tags']))
+
+places.sort(key=lambda place: place['tags'])
 
 json.dump(places, sys.stdout, indent=2)
